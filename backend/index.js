@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const createError = require("http-errors");
+
 // Connect mongoDB
 mongoose
   .connect("mongodb://127.0.0.1:27017/mydatabase")
@@ -29,9 +31,9 @@ const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
   console.log("Connected to port " + port);
 });
-const createError = () => {
-  console.log("Une erreur est survenue");
-};
+// const createError = () => {
+//   console.log("Une erreur est survenuee");
+// };
 // Find 404
 app.use((req, res, next) => {
   next(createError(404));
